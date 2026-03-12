@@ -15,13 +15,9 @@ $result=$stmt->get_result();
 $user=$result->fetch_assoc();
 
 if(!$user || !password_verify($_POST['password'],$user['password'])){
-
-echo "Invalid username or password";
-
-exit;
-
+die("Invalid login");
 }
 
 $_SESSION['user']=$user['username'];
 
-header("Location: home.php");
+header("Location: list.php");
